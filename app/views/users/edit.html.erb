@@ -1,0 +1,68 @@
+<h1>Edit User Profile</h1>
+
+<% if @update == false %>
+<div id="errors">
+	<h3>Errors</h3>
+	<ul>
+		<% @users.errors.messages.each do |field, error|%>
+		<li><strong><%= "#{field.capitalize} #{error.first}"%></strong></li>
+	<%end%>
+	<ul>
+</div>
+<%end%>
+
+
+<form action="/users/<%=@users.id%>" method="POST">
+
+<input name="authenticity_token" type="hidden" value="<%=form_authenticity_token%>"/>
+
+<input type="hidden" name="_method" value="patch">
+
+<label>
+	First Name:
+	<input type="text" name="first_name" value="<%=@users.first_name%>">
+</label>
+<br>
+
+<label>
+	Last Name:
+	<input type="text" name="last_name" value="<%=@users.last_name%>">
+</label>
+<br>
+
+<label>
+	Date of Birth:
+	<input type="date" name="dob" value="<%=@users.dob%>">
+</label>
+<br>
+
+<label>
+	Email Address:
+	<input type="email" name="email" value="<%=@users.email%>">
+</label>
+<br>
+
+<label>
+	Password:
+	<input type="password" name="password" value="<%=@users.password%>">
+</label>
+<br>
+
+<label>
+	Sex:
+	<label for="gender_male">M</labeL>
+	<input id="gender_male" type="radio" name="gender" value="M">
+	<label for="gender_female">F</labeL>
+	<input id="gender_female" type="radio" name="gender" value="F">
+</label>
+<br>
+
+<label>
+	Facebook Link:
+	<input type="text" name="facebook_url" value="<%=@users.facebook_link%>">
+</label>
+<br>
+
+<button>Update User</artist>
+
+</form>

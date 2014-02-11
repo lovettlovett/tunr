@@ -1,0 +1,7 @@
+<h1>All Songs</h1>
+
+<ul>
+	<% @songs.each do |song| %>
+	<li><%= song.title %>, <% song_artist = song.artist_id%> <a href="/artists/<%=song.artist_id%>"><%= @artists.find_by_id(song_artist).name%></a></li>
+	<%end%>
+</ul>

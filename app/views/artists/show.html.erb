@@ -1,0 +1,17 @@
+<h1><%=@artists.name%> Info</h1>
+
+<h3>Name: <%=@artists.name%></h3>
+<h3>Genre: <%=@artists.genre%></h3>
+<img src="<%=@artists.photo_url%>" width="200">
+
+<form action="/artists/<%=@artists.id%>" method="POST">
+	<input type="hidden" name="_method" value="DELETE"/>
+	 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+	 <button>Delete this Artist!</button>
+</form>
+
+<a href="/artists/<%=@artists.id%>/songs"><button>View Songs</button></a>
+
+<a href="/artists"><button>View All Artists</button></a>
+
+<a href="/artists/<%=@artists.id%>/edit"><button>Edit Artist</button></a>
