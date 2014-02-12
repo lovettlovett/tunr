@@ -54,6 +54,8 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
+		#If you used a form_for
+		#params.require(:user).permit(:email, :first_name, :last_name, :dob, :gender, :facebook_link)
 		if params[:password].empty?
 		return {first_name: params[:first_name], last_name: params[:last_name], dob: params[:dob], sex: params[:sex], email: params[:email], facebook_link: params[:facebook_link]}
 		else 
