@@ -6,21 +6,22 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@users = User.find_by_id(params[:id])
+		@user = User.find_by_id(params[:id])
 		render(:show)
 	end
 
 	def new
+		#@user = User.new
 		render(:new)
 	end
 
 	def create
-		@users = User.create(user_params)
+		@user = User.create(user_params)
 		#the problem is there is an error message
 		#when the user leaves a required field blank
 
-		if @users.valid?
-			redirect_to "/users/#{@users.id}"
+		if @user
+			redirect_to "/users/#{@user.id}"
 		else
 			#handle error
 			render(:new)
@@ -29,16 +30,16 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@users = User.find_by_id(params[:id])
+		@user = User.find_by_id(params[:id])
 		render(:edit)
 	end
 
 	def update
-		@users = User.find_by_id(params[:id])
-		@update = @users.update(user_params)
+		@user = User.find_by_id(params[:id])
+		@update = @user.update(user_params)
 
 		if @update
-			redirect_to "/users/#{@users.id}"
+			redirect_to "/users/#{@user.id}"
 		else
 			#handle error
 			render(:edit)
@@ -47,16 +48,16 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		@users = User.find_by_id(params[:id])
-		@users.destroy
+		@user = User.find_by_id(params[:id])
+		@user.destroy
 		redirect_to("/users")
 	end
 
 	def user_params
 		if params[:password].empty?
 		return {first_name: params[:first_name], last_name: params[:last_name], dob: params[:dob], sex: params[:sex], email: params[:email], facebook_link: params[:facebook_link]}
-		else return {first_name: params[:first_name], last_name: params[:last_name], dob: params[:dob], sex: params[:sex], email: params[:email], facebook_link: params[:facebook_link], password: params[:password]}
-
+		else 
+			return {first_name: params[:first_name], last_name: params[:last_name], dob: params[:dob], sex: params[:sex], email: params[:email], facebook_link: params[:facebook_link], password: params[:password]}
 		end
 
 	end

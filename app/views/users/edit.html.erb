@@ -4,7 +4,7 @@
 <div id="errors">
 	<h3>Errors</h3>
 	<ul>
-		<% @users.errors.messages.each do |field, error|%>
+		<% @user.errors.messages.each do |field, error|%>
 		<li><strong><%= "#{field.capitalize} #{error.first}"%></strong></li>
 	<%end%>
 	<ul>
@@ -12,7 +12,7 @@
 <%end%>
 
 
-<form action="/users/<%=@users.id%>" method="POST">
+<form action="/users/<%=@user.id%>" method="POST">
 
 <input name="authenticity_token" type="hidden" value="<%=form_authenticity_token%>"/>
 
@@ -20,31 +20,31 @@
 
 <label>
 	First Name:
-	<input type="text" name="first_name" value="<%=@users.first_name%>">
+	<input type="text" name="first_name" value="<%=@user.first_name%>">
 </label>
 <br>
 
 <label>
 	Last Name:
-	<input type="text" name="last_name" value="<%=@users.last_name%>">
+	<input type="text" name="last_name" value="<%=@user.last_name%>">
 </label>
 <br>
 
 <label>
 	Date of Birth:
-	<input type="date" name="dob" value="<%=@users.dob%>">
+	<input type="date" name="dob" value="<%=@user.dob%>">
 </label>
 <br>
 
 <label>
 	Email Address:
-	<input type="email" name="email" value="<%=@users.email%>">
+	<input type="email" name="email" value="<%=@user.email%>">
 </label>
 <br>
 
 <label>
 	Password:
-	<input type="password" name="password" value="<%=@users.password%>">
+	<input type="password" name="password" value="<%=@user.password%>">
 </label>
 <br>
 
@@ -59,7 +59,7 @@
 
 <label>
 	Facebook Link:
-	<input type="text" name="facebook_url" value="<%=@users.facebook_link%>">
+	<input type="text" name="facebook_url" value="<%=@user.facebook_link%>">
 </label>
 <br>
 

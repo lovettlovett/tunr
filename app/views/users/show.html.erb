@@ -1,20 +1,21 @@
 <h1>User Info</h1>
 
-<h3>First Name: <%=@users.first_name%></h3>
-<h3>Last Name: <%=@users.last_name%></h3>
-<h3>Sex: <%=@users.sex%></h3>
-<h3>Date of Birth: <%=@users.dob%></h3>
-<h3>Email Address: <%=@users.email%></h3>
-<h3>Pasword: <%=@users.password%></h3>
-<h3>Facebook Link: <%=@users.facebook_link%></h3>
+<h3>First Name: <%=@user.first_name%></h3>
+<h3>Last Name: <%=@user.last_name%></h3>
+<h3>Sex: <%=@user.sex%></h3>
+<h3>Date of Birth: <%=@user.dob%></h3>
+<h3>Email Address: <%=@user.email%></h3>
+<h3>Pasword: <%=@user.password%></h3>
+<h3>Facebook Link: <%=@user.facebook_link%></h3>
 
-<a href="/users/<%=@users.id%>/edit"><button>Update User</button></a><br><br>
+<button><%= link_to "Update User", edit_user_path(@user)%></button>
+<br><br>
 
-<form action="/users/<%=@users.id%>" method="POST">
+<form action="/users/<%=@user.id%>" method="POST">
 	<input type="hidden" name="_method" value="DELETE"/>
 	 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 	 <button>Delete User</button>
 </form>
 <br>
 
-<a href="/users"><button>Back to All Users</button></a>
+<button><%=link_to "Back to All Users", users_path(@user)%></button>

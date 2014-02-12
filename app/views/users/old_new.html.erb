@@ -1,16 +1,3 @@
-<h1>Add a New User</h1>
-
-<% unless @user.nil? %>
-<div id="errors">
-	<h3>Errors</h3>
-	<ul>
-		<% @user.errors.messages.each do |field, error|%>
-		<li><strong><%= "#{field.capitalize} #{error.first}"%></strong></li>
-	<%end%>
-	<ul>
-</div>
-<%end%>
-
 <form action="/users" method="POST">
 
 <input name="authenticity_token" type="hidden" value="<%=form_authenticity_token%>"/>
@@ -64,3 +51,20 @@
 
 </form>
 
+<%= form_for @user, url: {action: "create"}, html: {class:"nifty_form"} do |f| %>
+	<label>First Name:<%= f.text_field :first_name%></label>
+	<label>Last Name:<%= f.text_field :last_name%></label>
+	<label>Date of Birth:<%= f.date_field :dob%></label>
+	<label>Email Address:<%= f.text_field :email%></label>
+	<label>Password:<%= f.text_field :password%></label>
+	<label>Facebook URL: <%= f.text_field :facebook_link%></label>
+	<label>
+	Sex:
+<%= radio_button_tag(:sex, "f") %>
+<%= label_tag(:sex_female, "Female") %>
+<%= radio_button_tag(:sex, "m") %>
+<%= label_tag(:sex_male, "Male") %>
+</label>
+
+	<%= f.submit "Create" %>
+<%end%>

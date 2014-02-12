@@ -4,11 +4,10 @@
 <h3>Genre: <%=@artists.genre%></h3>
 <img src="<%=@artists.photo_url%>" width="200">
 
-<form action="/artists/<%=@artists.id%>" method="POST">
-	<input type="hidden" name="_method" value="DELETE"/>
-	 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-	 <button>Delete this Artist!</button>
-</form>
+
+<button><%= form_tag artist_path(@artists), method: "delete" do %>
+<%= submit_tag("Delete")%>
+<%end%></button>
 
 <a href="/artists/<%=@artists.id%>/songs"><button>View Songs</button></a>
 
